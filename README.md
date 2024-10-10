@@ -1,4 +1,4 @@
-[![Build](https://github.com/80kb/ptcgp/actions/workflows/makefile.yml/badge.svg)](https://github.com/80kb/ptcgp/actions/workflows/makefile.yml) ![Status Badge](https://img.shields.io/badge/Project_Status-in_development-blue)
+[![Build](https://github.com/80kb/ptcgp/actions/workflows/makefile.yml/badge.svg)](https://github.com/80kb/ptcgp/actions/workflows/makefile.yml)
 # Pokemon TCG Player
 #### A lightweight, automated Pokemon TCG client/game-engine aiming to be highly customizable and dynamic.
 

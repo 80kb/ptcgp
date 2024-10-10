@@ -8,7 +8,8 @@ BLD_DIR = ./out
 SRC_DIR = ./src
 LIB_DIR = ./lib
 
-SRC_FILES = $(SRC_DIR)/main.cpp
+SRC_FILES = $(SRC_DIR)/main.cpp\
+	    $(SRC_DIR)/sdl/sdl_boiler.cpp
 
 $(PROJECT):
 	$(CC) $(CFLAGS) $(SRC_FILES) $(LDFLAG) -o $(BLD_DIR)/$(PROJECT)

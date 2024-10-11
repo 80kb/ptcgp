@@ -16,6 +16,7 @@ $(PROJECT):
 	$(CC) $(CFLAGS) $(SRC_FILES) $(LDFLAG) -o $(BLD_DIR)/$(PROJECT)
 
 config: SDL2
+	mkdir ./$(BLD_DIR)
 
 SDL2:
 	cd $(LIB_DIR)/SDL2 &&\

@@ -17,5 +17,5 @@ jobs:
     - name: clone submodules
       run: git submodule update --init --recursive
 
-    - name: Install SDL2
-      run: make SDL2
+    - name: configure
+      run: make config

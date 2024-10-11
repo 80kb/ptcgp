@@ -13,7 +13,7 @@ SRC_FILES := $(SRC_DIR)/main.cpp\
 	     $(SRC_DIR)/engine/game_state.cpp
 
 $(TARGET): $(SRC_FILES)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $(BLD_DIR)/$@
+	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $(BLD_DIR)/$@
 
 config: SDL2
 	mkdir ./$(BLD_DIR)

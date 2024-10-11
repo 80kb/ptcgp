@@ -16,7 +16,6 @@ protected:
 	}
 
 public:
-	virtual void handle_input (SDL_Event& event) = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
 };

@@ -1,7 +1,7 @@
-TARGET = ptcgp
+TARGET 	:= ptcgp
 
-CC = g++
-CFLAGS := -g -Wall -Wextra
+CC 	:= g++
+CFLAGS 	:= -g -Wall -Wextra
 LDFLAGS := -lSDL2
 
 BLD_DIR := ./out

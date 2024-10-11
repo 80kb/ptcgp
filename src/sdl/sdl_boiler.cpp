@@ -1,6 +1,6 @@
 #include "sdl_boiler.h"
 
-SDL_State::SDL_State (const char* title) {
+SDLState::SDLState (const char* title) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("Failed to initialize SDL\n");
 		SDL_Quit();
@@ -28,7 +28,7 @@ SDL_State::SDL_State (const char* title) {
 	);
 }
 
-SDL_State::~SDL_State () {
+SDLState::~SDLState () {
 	SDL_DestroyRenderer( _renderer );
 	SDL_DestroyWindow( _window );
 	SDL_Quit();

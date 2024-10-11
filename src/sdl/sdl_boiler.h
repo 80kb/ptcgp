@@ -2,11 +2,11 @@
 
 #include <SDL2/SDL.h>
 
-class SDL_State {
+class SDLState {
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
 
 public:
-	SDL_State(const char* title);
-	~SDL_State();
+	SDLState (const char* title);
+	~SDLState();
 };

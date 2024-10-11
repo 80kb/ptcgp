@@ -9,10 +9,13 @@ SRC_DIR = ./src
 LIB_DIR = ./lib
 
 SRC_FILES = $(SRC_DIR)/main.cpp\
-	    $(SRC_DIR)/sdl/sdl_boiler.cpp
+	    $(SRC_DIR)/sdl/sdl_boiler.cpp\
+	    $(SRC_DIR)/engine/game_state.cpp
 
 $(PROJECT):
 	$(CC) $(CFLAGS) $(SRC_FILES) $(LDFLAG) -o $(BLD_DIR)/$(PROJECT)
+
+config: SDL2
 
 SDL2:
 	cd $(LIB_DIR)/SDL2 &&\

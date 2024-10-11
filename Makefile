@@ -27,9 +27,7 @@ SDL2:
 	cd $(LIB_DIR)/SDL2/build &&\
 	sudo make install	
 
-cleanSDL2:
+clean:
+	rm -rf $(BLD_DIR)/*
 	$(MAKE) clean -C $(LIB_DIR)/SDL2/build
 	cd $(LIB_DIR)/SDL2 && rm -rf build
-
-clean: cleanSDL2
-	rm -rf $(BLD_DIR)/*

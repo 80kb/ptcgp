@@ -9,8 +9,8 @@ SRC_DIR := ./src
 LIB_DIR := ./lib
 
 SRC_FILES := $(SRC_DIR)/main.cpp\
-	     $(SRC_DIR)/sdl/sdl_boiler.cpp\
-	     $(SRC_DIR)/engine/game_state.cpp
+	     $(SRC_DIR)/engine/game_state.cpp\
+	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp
 
 $(TARGET): $(SRC_FILES)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $(BLD_DIR)/$@
@@ -25,7 +25,10 @@ SDL2:
 	../configure
 	$(MAKE) -C $(LIB_DIR)/SDL2/build
 	cd $(LIB_DIR)/SDL2/build &&\
-	sudo make install	
+	sudo make install
+
+run:
+	$(BLD_DIR)/$(TARGET)
 
 clean:
 	rm -rf $(BLD_DIR)/*

@@ -14,6 +14,7 @@ protected:
 		       mouseY >= bounding_box.y &&
 		       mouseY <= bounding_box.y + bounding_box.h;
 	}
+
 public:
 	virtual void handle_input (SDL_Event& event) = 0;
 	virtual void update() = 0;

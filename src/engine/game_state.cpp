@@ -32,7 +32,13 @@ void GameState::update () {
 }
 
 void GameState::render () {
+	/* render background */
+	SDL_SetRenderDrawColor(_sdl_state.get_renderer(), 58, 43, 77, 255);
+	SDL_RenderClear(_sdl_state.get_renderer());
+
 	for (size_t i = 0; i < _game_objects.size(); ++i) {
 		_game_objects[i]->render();
 	}
+
+	SDL_RenderPresent(_sdl_state.get_renderer());
 }

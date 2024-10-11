@@ -19,3 +19,6 @@ jobs:
 
     - name: configure
       run: make config
+
+    - name: build
+      run: make

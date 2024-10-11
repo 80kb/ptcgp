@@ -1,4 +1,4 @@
-#include "game_state.h"
+#include "game_state.hpp"
 
 void GameState::game_loop () {
 	while (!_quit) {

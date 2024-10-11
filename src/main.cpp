@@ -1,5 +1,5 @@
-#include "sdl/sdl_boiler.h"
-#include "engine/game_state.h"
+#include "sdl/sdl_boiler.hpp"
+#include "engine/game_state.hpp"
 
 int main (void) {
 	SDLState sdl_state("PTCG Player");

@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
-#include "game_object.h"
+#include "game_object.hpp"
 
 class GameState {
 	int _mouseX, _mouseY;

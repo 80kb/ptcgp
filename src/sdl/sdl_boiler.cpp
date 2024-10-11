@@ -1,4 +1,4 @@
-#include "sdl_boiler.h"
+#include "sdl_boiler.hpp"
 
 SDLState::SDLState (const char* title) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {

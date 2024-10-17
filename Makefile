@@ -10,7 +10,9 @@ LIB_DIR := ./lib
 
 SRC_FILES := $(SRC_DIR)/main.cpp\
 	     $(SRC_DIR)/engine/game_state.cpp\
-	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp
+	     $(SRC_DIR)/engine/game_object.cpp\
+	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp\
+	     $(SRC_DIR)/engine/ui/button.cpp
 
 $(TARGET): $(SRC_FILES)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $(BLD_DIR)/$@

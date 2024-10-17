@@ -22,4 +22,8 @@ public:
 	GameState() : _quit(false), _sdl_state("PTCG Player") { }
 
 	void game_loop ();
+	void register_object(GameObject* object);
+
+	SDL_Renderer* get_renderer() { return _sdl_state.get_renderer(); }
+	SDL_Window* get_window() { return _sdl_state.get_window(); }
 };

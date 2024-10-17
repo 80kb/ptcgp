@@ -14,7 +14,7 @@ class GameState {
 	SDL_State _sdl_state;
 
 	void event_loop();
-	void handle_event(int type);
+	void handle_event();
 	void update();
 	void render();
 

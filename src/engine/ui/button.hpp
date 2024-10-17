@@ -14,6 +14,9 @@ public:
 	void render();
 	void update() {}
 
+	void mouse_button_down(SDL_Event& e);
+	void mouse_button_up(SDL_Event& e);
+
 	void set_text(const char* text)	{ _text = text; }
 	const char* text() { return _text; }
 

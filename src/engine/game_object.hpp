@@ -15,6 +15,9 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
+	virtual void mouse_button_down(SDL_Event& e) {};
+	virtual void mouse_button_up(SDL_Event& e) {};
+
 	virtual bool mouse_colliding (int mouseX, int mouseY) {
 		return mouseX >= _bounding_box.x &&
 		       mouseX <= _bounding_box.x + _bounding_box.w &&

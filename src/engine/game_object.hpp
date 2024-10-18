@@ -1,12 +1,15 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include <assert.h>
 
 class GameObject {
 protected:
 	SDL_Renderer* _renderer;
 	SDL_Rect _bounding_box;
 	SDL_Texture* _texture;
+
+	bool _clicked;
 
 public:
 	GameObject(SDL_Renderer* renderer);
@@ -15,8 +18,8 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-	virtual void mouse_button_down(SDL_Event& e) {};
-	virtual void mouse_button_up(SDL_Event& e) {};
+	virtual void mouse_button_down(SDL_Event& e) { assert(e.type); }
+	virtual void mouse_button_up(SDL_Event& e) { assert(e.type); }
 
 	virtual bool mouse_colliding (int mouseX, int mouseY) {
 		return mouseX >= _bounding_box.x &&

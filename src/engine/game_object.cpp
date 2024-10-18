@@ -1,6 +1,6 @@
 #include "game_object.hpp"
 
-GameObject::GameObject (SDL_Renderer* renderer) : _renderer(renderer) {
+GameObject::GameObject (SDL_Renderer* renderer) : _renderer(renderer), _clicked(false) {
 	_bounding_box.h = 50;
 	_bounding_box.w = 50;
 	_bounding_box.x = 0;

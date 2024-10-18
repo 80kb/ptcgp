@@ -32,20 +32,13 @@ void GameState::handle_event () {
 		case SDL_QUIT:
 			_quit = true;
 			break;
-		case SDL_MOUSEMOTION:
-			SDL_GetMouseState(&_mouseX, &_mouseY);
-			break;
 		case SDL_MOUSEBUTTONDOWN:
-			for (size_t i = 0; i < _game_objects.size(); ++i) {
-				if (_game_objects[i]->mouse_colliding(_mouseX, _mouseY))
-					_game_objects[i]->mouse_button_down(_event);
-			}
+			for (size_t i = 0; i < _game_objects.size(); ++i)
+				_game_objects[i]->mouse_button_down(_event);
 			break;
 		case SDL_MOUSEBUTTONUP:
-			for (size_t i = 0; i < _game_objects.size(); ++i) {
-				if (_game_objects[i]->mouse_colliding(_mouseX, _mouseY))
-					_game_objects[i]->mouse_button_up(_event);
-			}
+			for (size_t i = 0; i < _game_objects.size(); ++i)
+				_game_objects[i]->mouse_button_up(_event);
 			break;
 	}
 }

@@ -7,7 +7,6 @@
 #include "sdl/sdl_boiler.hpp"
 
 class GameState {
-	int _mouseX, _mouseY;
 	bool _quit;
 	std::vector<GameObject*> _game_objects;
 	SDL_Event _event;

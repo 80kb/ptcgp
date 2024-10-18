@@ -5,16 +5,19 @@
 int main (void) {
 	GameState game_state;
 
+	Label label(game_state.get_renderer());
+	label.set_position(100, 160);
+	label.set_size(100, 50);
+	label.set_text("Geschichte");
+
 	Button button(game_state.get_renderer());
 	button.set_position(100, 100);
 	button.set_size(100, 50);
 	button.set_text("Scheisse");
 	button.set_color(255, 0, 70);
-
-	Label label(game_state.get_renderer());
-	label.set_position(100, 160);
-	label.set_size(100, 50);
-	label.set_text("Geschichte");
+	button.set_action([&]() {
+		label.set_text("Hello!");
+	});
 
 	game_state.register_object(&button);
 	game_state.register_object(&label);

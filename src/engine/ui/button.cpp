@@ -29,6 +29,9 @@ void Button::mouse_button_down (SDL_Event& e) {
 	int r, g, b;
 	color(r, g, b);
 	set_color(r * 0.8, g * 0.8, b * 0.8);
+
+	/* Run action */
+	action();
 }
 
 void Button::mouse_button_up (SDL_Event& e) {

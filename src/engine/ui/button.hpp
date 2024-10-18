@@ -2,11 +2,13 @@
 
 #include "../game_object.hpp"
 #include <SDL2/SDL_ttf.h>
+#include <functional>
 
 class Button : public GameObject {
 protected:
 	const char* _text;
 	int _r, _g, _b;
+	std::function<void()> _action;
 
 	TTF_Font* _font;
 	SDL_Color _font_color;
@@ -36,4 +38,7 @@ public:
 
 	void set_size(int w, int h) { _bounding_box.w = w; _bounding_box.h = h; }
 	void size(int& w, int& h) { w = _bounding_box.w; h = _bounding_box.h; }
+
+	void set_action(std::function<void()> action) { _action = action; }
+	void action() { _action(); }
 };

@@ -17,6 +17,9 @@ jobs:
     - name: clone submodules
       run: git submodule update --init --recursive
 
+    - name: libraries
+      run: sudo apt-get install libsdl2-ttf-dev
+
     - name: configure
       run: make config
 

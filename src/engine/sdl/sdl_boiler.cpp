@@ -1,8 +1,15 @@
 #include "sdl_boiler.hpp"
+#include <SDL2/SDL_ttf.h>
 
 SDL_State::SDL_State (const char* title) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("Failed to initialize SDL\n");
+		SDL_Quit();
+		return;
+	}
+
+	if (TTF_Init() < 0) {
+		printf("Failed to initialize SDL_ttf\n");
 		SDL_Quit();
 		return;
 	}

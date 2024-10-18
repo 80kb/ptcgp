@@ -2,7 +2,7 @@ TARGET 	:= ptcgp
 
 CC 	:= g++
 CFLAGS 	:= -g -Wall -Wextra
-LDFLAGS := -lSDL2
+LDFLAGS := -lSDL2 -lSDL2_ttf
 
 BLD_DIR := ./out
 SRC_DIR := ./src

@@ -2,7 +2,7 @@
 #include <assert.h>
 
 Button::Button (SDL_Renderer* renderer) : GameObject(renderer) {
-	_font = TTF_OpenFont("./ttf/arial.ttf", 32);
+	_font = TTF_OpenFont("./ttf/arial.ttf", 128);
 	_font_color = {255, 255, 255, 255};
 
 	set_text("button");

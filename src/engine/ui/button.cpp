@@ -1,54 +1,61 @@
 #include "button.hpp"
 #include <assert.h>
 
-Button::Button (SDL_Renderer* renderer) : GameObject(renderer) {
-	_font = TTF_OpenFont("./ttf/arial.ttf", 128);
-	_font_color = {255, 255, 255, 255};
+pkmButton::pkmButton( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
+	font 		= TTF_OpenFont( "./ttf/arial.ttf", 128 );
+	fontColor 	= { 255, 255, 255, 255 };
 
-	set_text("button");
-	set_color(255, 0, 0);
+	SetText( "button" );
+	SetColor( 255, 0, 0 );
 }
 
-Button::~Button () {
-	SDL_DestroyTexture(_text_texture);
+pkmButton::~pkmButton( void ) {
+	SDL_DestroyTexture( textTexture );
 }
 
-void Button::render () {
-	SDL_SetRenderDrawColor(_renderer, _r, _g, _b, 255);
-	SDL_RenderFillRect(_renderer, &_bounding_box);
-	SDL_RenderCopy(_renderer, _text_texture, NULL, &_bounding_box);
+void pkmButton::Render( void ) {
+	SDL_SetRenderDrawColor( renderer, r, g, b, 255 );
+	SDL_RenderFillRect( renderer, &boundingBox );
+	SDL_RenderCopy( renderer, textTexture, NULL, &boundingBox );
 }
 
-void Button::mouse_button_down (SDL_Event& e) {
-	assert(e.type == SDL_MOUSEBUTTONDOWN);
-
-	if (!mouse_colliding(e.motion.x, e.motion.y)) return;
-	_clicked = true;
-
-	/* Update color */
+void pkmButton::MouseButtonDown( const SDL_Event& e ) {
 	int r, g, b;
-	color(r, g, b);
-	set_color(r * 0.8, g * 0.8, b * 0.8);
 
-	/* Run action */
-	action();
+	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
+		return;
+	}
+
+	if ( !MouseColliding( e.motion.x, e.motion.y ) ) {
+		return;
+	}
+
+	clicked = true;
+	GetColor( r, g, b );
+	SetColor( r * 0.8, g * 0.8, b * 0.8 );
+	CallAction();
 }
 
-void Button::mouse_button_up (SDL_Event& e) {
-	assert(e.type == SDL_MOUSEBUTTONUP);
-
-	if (!_clicked) return;
-	_clicked = false;
-	
-	/* Update color */
+void pkmButton::MouseButtonUp( const SDL_Event& e ) {
 	int r, g, b;
-	color(r, g, b);
-	set_color(r / 0.8, g / 0.8, b / 0.8);
+
+	if ( e.type != SDL_MOUSEBUTTONUP ) {
+		return;
+	}
+
+	if ( !clicked ) {
+		return;
+	}
+
+	clicked = false;
+	GetColor( r, g, b );
+	SetColor( r / 0.8, g / 0.8, b / 0.8 );
 }
 
-void Button::set_text (const char* text) {
-	_text = text;
-	SDL_Surface* surface = TTF_RenderText_Solid(_font, _text, _font_color);
-	_text_texture = SDL_CreateTextureFromSurface(_renderer, surface);
-	SDL_FreeSurface(surface);
+void pkmButton::SetText( const char* text ) {
+	this->text 		= text;
+	SDL_Surface* surface 	= TTF_RenderText_Solid( font, text, fontColor );
+	textTexture 		= SDL_CreateTextureFromSurface( renderer, surface );
+
+	SDL_FreeSurface( surface );
 }

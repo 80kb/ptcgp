@@ -1,76 +1,54 @@
 #include "game_state.hpp"
 
-/* The main game loop. Loops until quit
- * event is fired. Checks the event loop
- * first, then updates state and objects,
- * and updates the renderer
- */
-void GameState::game_loop () {
-	while (!_quit) {
-		event_loop();
-		update();
-		render();
+void pkmGameState::GameLoop( void ) {
+	while ( !quit ) {
+		EventLoop();
+		Update();
+		Render();
 	}
 }
 
-/* Pops any events from the SDL event loop
- * and passes their ID to the handle_event
- * function.
- */
-void GameState::event_loop () {
-	while (SDL_PollEvent(&_event)) {
-		handle_event();
+void pkmGameState::EventLoop( void ) {
+	while ( SDL_PollEvent( &event ) ) {
+		HandleEvent();
 	}
 }
 
-/* Parses the given SDL Event ID
- * and calls the corresponding
- * function.
- */
-void GameState::handle_event () {
-	switch (_event.type) {
+void pkmGameState::HandleEvent( void ) {
+	switch ( event.type ) {
 		case SDL_QUIT:
-			_quit = true;
+			quit = true;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-			for (size_t i = 0; i < _game_objects.size(); ++i)
-				_game_objects[i]->mouse_button_down(_event);
+			for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+				gameObjects[i]->MouseButtonDown( event );
+			}
 			break;
 		case SDL_MOUSEBUTTONUP:
-			for (size_t i = 0; i < _game_objects.size(); ++i)
-				_game_objects[i]->mouse_button_up(_event);
+			for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+				gameObjects[i]->MouseButtonUp( event );
+			}
 			break;
 	}
 }
 
-/* Updates game objects and any game state
- * that needs to be updated before/outside
- * of the render loop
- */
-void GameState::update () {
-	for (size_t i = 0; i < _game_objects.size(); ++i) {
-		_game_objects[i]->update();
+void pkmGameState::Update( void ) {
+	for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+		gameObjects[i]->Update();
 	}
 }
 
-/* Handles the game state rendering outside
- * the main render loop and runs all game object
- * render functions inside the main render loop
- */
-void GameState::render () {
-	/* render background */
-	SDL_SetRenderDrawColor(_sdl_state.get_renderer(), 35, 27, 46, 255);
-	SDL_RenderClear(_sdl_state.get_renderer());
+void pkmGameState::Render( void ) {
+	SDL_SetRenderDrawColor( sdlState.get_renderer(), 35, 27, 46, 255 );
+	SDL_RenderClear( sdlState.get_renderer() );
 
-	for (size_t i = 0; i < _game_objects.size(); ++i) {
-		_game_objects[i]->render();
+	for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+		gameObjects[i]->Render();
 	}
 
-	SDL_RenderPresent(_sdl_state.get_renderer());
+	SDL_RenderPresent( sdlState.get_renderer() );
 }
 
-/* Registers a given object to the game object array
- */
-void GameState::register_object (GameObject* object) {
-	_game_objects.push_back(object);
+void pkmGameState::RegisterObject( pkmGameObject* object ) {
+	gameObjects.push_back( object );
 }

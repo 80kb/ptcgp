@@ -4,41 +4,69 @@
 #include <SDL2/SDL_ttf.h>
 #include <functional>
 
-class Button : public GameObject {
+class pkmButton : public pkmGameObject {
 protected:
-	const char* _text;
-	int _r, _g, _b;
-	std::function<void()> _action;
+	std::function<void()> action;
 
-	TTF_Font* _font;
-	SDL_Color _font_color;
-	SDL_Texture* _text_texture;
+	const char*	text;
+	int 		r, g, b;
+
+	TTF_Font* 	font;
+	SDL_Color 	fontColor;
+	SDL_Texture* 	textTexture;
 
 public:
-	Button(SDL_Renderer* renderer);
-	~Button();
+	pkmButton( SDL_Renderer* renderer );
+	~pkmButton( void );
 
-	/* Abstract methods */
-	void render();
-	void update() {}
+	void Render( void );
+	void Update( void ) {}
 
-	/* Event handling */
-	void mouse_button_down(SDL_Event& e);
-	void mouse_button_up(SDL_Event& e);
+	void MouseButtonDown( const SDL_Event& e );
+	void MouseButtonUp( const SDL_Event& e );
 
-	/* Accessor methods */
-	void set_text(const char* text);
-	const char* text() { return _text; }
+	void SetText( const char* text );
+	const char* GetText( void ) const {
+		return text;
+	}
 
-	void set_color(int r, int g, int b) { _r = r; _g = g; _b = b; }
-	void color(int& r, int& g, int& b) { r = _r; g = _g; b = _b; }
+	void SetColor( const int r, const int g, const int b ) { 
+		this->r = r; 
+		this->g = g;
+		this->b = b;
+	}
 
-	void set_position(int x, int y) { _bounding_box.x = x; _bounding_box.y = y; };
-	void position(int& x, int& y) { x = _bounding_box.x; y = _bounding_box.y; };
+	void GetColor( int& r, int& g, int& b ) const {
+		r = this->r; 
+		g = this->g; 
+		b = this->b; 
+	}
 
-	void set_size(int w, int h) { _bounding_box.w = w; _bounding_box.h = h; }
-	void size(int& w, int& h) { w = _bounding_box.w; h = _bounding_box.h; }
+	void SetPosition( const int x, const int y ) { 
+		boundingBox.x = x;
+		boundingBox.y = y; 
+	}
 
-	void set_action(std::function<void()> action) { _action = action; }
-	void action() { _action(); }
+	void GetPosition( int& x, int& y ) const {
+		x = boundingBox.x;
+		y = boundingBox.y; 
+	}
+
+	void SetSize( const int w, const int h ) { 
+		boundingBox.w = w;
+		boundingBox.h = h; 
+	}
+
+	void GetSize( int& w, int& h ) const {
+		w = boundingBox.w;
+		h = boundingBox.h;
+	}
+
+	void SetAction( const std::function<void()> action ) {
+		this->action = action;
+	}
+
+	void CallAction() {
+		action();
+	}
 };

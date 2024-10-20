@@ -10,6 +10,6 @@ public:
 	SDL_State(const char* title);
 	~SDL_State();
 
-	SDL_Window* get_window() { return _window; }
-	SDL_Renderer* get_renderer() { return _renderer; }
+	SDL_Window* get_window() const { return _window; }
+	SDL_Renderer* get_renderer() const { return _renderer; }
 };

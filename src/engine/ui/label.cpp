@@ -1,23 +1,24 @@
 #include "label.hpp"
 
-Label::Label (SDL_Renderer* renderer) : GameObject(renderer) {
-	_font = TTF_OpenFont("./ttf/arial.ttf", 128);
-	_font_color = {255, 255, 255, 255};
+pkmLabel::pkmLabel( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
+	font 		= TTF_OpenFont( "./ttf/arial.ttf", 128 );
+	fontColor 	= { 255, 255, 255, 255 };
 
-	set_text("label");
+	SetText("label");
 }
 
-Label::~Label () {
-	SDL_DestroyTexture(_text_texture);
+pkmLabel::~pkmLabel ( void ) {
+	SDL_DestroyTexture( textTexture );
 }
 
-void Label::render () {
-	SDL_RenderCopy(_renderer, _text_texture, NULL, &_bounding_box);
+void pkmLabel::Render ( void ) {
+	SDL_RenderCopy( renderer, textTexture, NULL, &boundingBox );
 }
 
-void Label::set_text (const char* text) {
-	_text = text;
-	SDL_Surface* surface = TTF_RenderText_Solid(_font, _text, _font_color);
-	_text_texture = SDL_CreateTextureFromSurface(_renderer, surface);
+void pkmLabel::SetText( const char* text ) {
+	this->text 		= text;
+	SDL_Surface* surface 	= TTF_RenderText_Solid( font,  text, fontColor );
+	textTexture 		= SDL_CreateTextureFromSurface( renderer, surface );
+	
 	SDL_FreeSurface(surface);
 }

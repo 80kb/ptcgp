@@ -3,29 +3,34 @@
 #include <SDL2/SDL.h>
 #include <assert.h>
 
-class GameObject {
+class pkmGameObject {
 protected:
-	SDL_Renderer* _renderer;
-	SDL_Rect _bounding_box;
-	SDL_Texture* _texture;
+	SDL_Renderer* 	renderer;
+	SDL_Texture* 	texture;
+	SDL_Rect 	boundingBox;
 
-	bool _clicked;
+	bool 		clicked;
 
 public:
-	GameObject(SDL_Renderer* renderer);
-	~GameObject() {}
+	pkmGameObject( SDL_Renderer* const renderer );
+	~pkmGameObject( void ) {}
 
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void Update( void ) = 0;
+	virtual void Render( void ) = 0;
 
-	virtual void mouse_button_down(SDL_Event& e) { assert(e.type); }
-	virtual void mouse_button_up(SDL_Event& e) { assert(e.type); }
+	virtual void MouseButtonDown( const SDL_Event& e ) {
+		assert(e.type);
+	}
 
-	virtual bool mouse_colliding (int mouseX, int mouseY) {
-		return mouseX >= _bounding_box.x &&
-		       mouseX <= _bounding_box.x + _bounding_box.w &&
+	virtual void MouseButtonUp( const SDL_Event& e ) {
+		assert(e.type);
+	}
 
-		       mouseY >= _bounding_box.y &&
-		       mouseY <= _bounding_box.y + _bounding_box.h;
+	virtual bool MouseColliding( int mouseX, int mouseY ) const {
+		return mouseX >= boundingBox.x &&
+		       mouseX <= boundingBox.x + boundingBox.w &&
+
+		       mouseY >= boundingBox.y &&
+		       mouseY <= boundingBox.y + boundingBox.h;
 	}
 };

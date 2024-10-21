@@ -1,4 +1,4 @@
-#include "label.hpp"
+#include "Label.hpp"
 
 pkmLabel::pkmLabel( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
 	font 		= TTF_OpenFont( "./ttf/arial.ttf", 128 );

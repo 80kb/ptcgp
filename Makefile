@@ -8,12 +8,12 @@ BLD_DIR := ./out
 SRC_DIR := ./src
 LIB_DIR := ./lib
 
-SRC_FILES := $(SRC_DIR)/main.cpp\
-	     $(SRC_DIR)/engine/game_state.cpp\
-	     $(SRC_DIR)/engine/game_object.cpp\
+SRC_FILES := $(SRC_DIR)/Main.cpp\
+	     $(SRC_DIR)/engine/GameState.cpp\
+	     $(SRC_DIR)/engine/GameObject.cpp\
 	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp\
-	     $(SRC_DIR)/engine/ui/button.cpp\
-	     $(SRC_DIR)/engine/ui/label.cpp\
+	     $(SRC_DIR)/engine/ui/Button.cpp\
+	     $(SRC_DIR)/engine/ui/Label.cpp\
 
 $(TARGET): $(SRC_FILES)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $(BLD_DIR)/$@

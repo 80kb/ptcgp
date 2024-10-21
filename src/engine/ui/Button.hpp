@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../game_object.hpp"
+#include "../GameObject.hpp"
 #include <SDL2/SDL_ttf.h>
 #include <functional>
 
@@ -24,6 +24,9 @@ public:
 
 	void MouseButtonDown( const SDL_Event& e );
 	void MouseButtonUp( const SDL_Event& e );
+
+	/*******************************************/
+	/*******************************************/
 
 	void SetText( const char* text );
 	const char* GetText( void ) const {

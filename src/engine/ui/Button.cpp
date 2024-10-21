@@ -1,4 +1,4 @@
-#include "button.hpp"
+#include "Button.hpp"
 #include <assert.h>
 
 pkmButton::pkmButton( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {

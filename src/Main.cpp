@@ -1,6 +1,6 @@
-#include "engine/game_state.hpp"
-#include "engine/ui/button.hpp"
-#include "engine/ui/label.hpp"
+#include "engine/GameState.hpp"
+#include "engine/ui/Button.hpp"
+#include "engine/ui/Label.hpp"
 
 int main (void) {
 	pkmGameState gameState;
@@ -15,7 +15,7 @@ int main (void) {
 	pkmButton button( gameState.GetRenderer() );
 	button.SetPosition( 100, 100 );
 	button.SetSize( 100, 50 );
-	button.SetText( "Schön" );
+	button.SetText( "Schoen" );
 	button.SetColor( 255, 0, 70 );
 	button.SetAction([&]( void ) {
 		if ( toggle ) {

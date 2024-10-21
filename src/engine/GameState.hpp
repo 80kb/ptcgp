@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
-#include "game_object.hpp"
+#include "GameObject.hpp"
 #include "sdl/sdl_boiler.hpp"
 
 class pkmGameState {

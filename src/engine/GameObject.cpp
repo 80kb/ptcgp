@@ -1,4 +1,4 @@
-#include "game_object.hpp"
+#include "GameObject.hpp"
 
 pkmGameObject::pkmGameObject( SDL_Renderer* renderer ) : renderer( renderer ), clicked( false ) {
 	boundingBox.h = 50;

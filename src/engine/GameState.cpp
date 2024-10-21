@@ -1,4 +1,4 @@
-#include "game_state.hpp"
+#include "GameState.hpp"
 
 void pkmGameState::GameLoop( void ) {
 	while ( !quit ) {

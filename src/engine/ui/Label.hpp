@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../game_object.hpp"
+#include "../GameObject.hpp"
 #include <SDL2/SDL_ttf.h>
 
 class pkmLabel : public pkmGameObject {
@@ -16,6 +16,9 @@ public:
 
 	void Render( void );
 	void Update( void ) {}
+
+	/*******************************************/
+	/*******************************************/
 
 	void SetText( const char* text );
 	const char* GetText() const {

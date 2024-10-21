@@ -17,8 +17,8 @@ public:
 	pkmCard( SDL_Renderer* renderer, const char* path );
 	~pkmCard( void );
 
-	void Render( void );
-	void Update( void );
+	void Render( void ) override;
+	void Update( void ) override;
 	void SetTexture( const char* path );
 	void Hide( void );
 	void Show( void );

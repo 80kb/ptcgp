@@ -12,8 +12,8 @@ public:
 	pkmLabel( SDL_Renderer* renderer );
 	~pkmLabel( void );
 
-	void 		Render( void );
-	void 		Update( void ) {}
+	void 		Render( void ) override;
+	void		Update( void ) override;
 	void 		SetText( const char* text );
 	const char* 	GetText( void ) const;
 };

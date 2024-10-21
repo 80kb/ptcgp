@@ -24,14 +24,10 @@ void pkmGameState::HandleEvent( void ) {
 			quit = true;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-			for ( size_t i = 0; i < gameObjects.size(); ++i ) {
-				gameObjects[i]->MouseButtonDown( event );
-			}
+			MouseButtonDown();
 			break;
 		case SDL_MOUSEBUTTONUP:
-			for ( size_t i = 0; i < gameObjects.size(); ++i ) {
-				gameObjects[i]->MouseButtonUp( event );
-			}
+			MouseButtonUp();
 			break;
 	}
 }
@@ -51,6 +47,20 @@ void pkmGameState::Render( void ) {
 	}
 
 	SDL_RenderPresent( sdlState.get_renderer() );
+}
+
+void pkmGameState::MouseButtonDown() {
+	for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+		if ( gameObjects[i]->MouseColliding( event.motion.x, event.motion.y ) ) {
+			gameObjects[i]->MouseButtonDown( event );
+		}
+	}
+}
+
+void pkmGameState::MouseButtonUp() {
+	for ( size_t i = 0; i < gameObjects.size(); ++i ) {
+		gameObjects[i]->MouseButtonUp( event );
+	}
 }
 
 void pkmGameState::RegisterObject( pkmGameObject* object ) {

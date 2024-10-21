@@ -17,6 +17,9 @@ class pkmGameState {
 	void Update( void );
 	void Render( void );
 
+	void MouseButtonDown( void );
+	void MouseButtonUp( void );
+
 public:
 	pkmGameState( void );
 

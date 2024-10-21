@@ -15,11 +15,23 @@ pkmGameObject::~pkmGameObject( void ) {
 }
 
 void pkmGameObject::MouseButtonDown( const SDL_Event& e ) {
-	assert(e.type);
+	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
+		return;
+	}
+
+	clicked = true;
 }
 
 void pkmGameObject::MouseButtonUp( const SDL_Event& e ) {
-	assert(e.type);
+	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
+		return;
+	}
+
+	if ( !clicked ) {
+		return;
+	}
+
+	clicked = false;
 }
 
 bool pkmGameObject::MouseColliding( int mouseX, int mouseY ) const {

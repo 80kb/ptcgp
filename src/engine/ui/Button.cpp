@@ -22,15 +22,9 @@ void pkmButton::Render( void ) {
 void pkmButton::Update( void ) {}
 
 void pkmButton::MouseButtonDown( const SDL_Event& e ) {
+	pkmGameObject::MouseButtonDown( e );
+
 	int r, g, b;
-
-	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
-		return;
-	}
-
-	if ( !MouseColliding( e.motion.x, e.motion.y ) ) {
-		return;
-	}
 
 	clicked = true;
 	GetColor( r, g, b );
@@ -39,15 +33,9 @@ void pkmButton::MouseButtonDown( const SDL_Event& e ) {
 }
 
 void pkmButton::MouseButtonUp( const SDL_Event& e ) {
+	pkmGameObject::MouseButtonUp( e );
+
 	int r, g, b;
-
-	if ( e.type != SDL_MOUSEBUTTONUP ) {
-		return;
-	}
-
-	if ( !clicked ) {
-		return;
-	}
 
 	clicked = false;
 	GetColor( r, g, b );

@@ -15,10 +15,10 @@ public:
 	pkmButton( SDL_Renderer* renderer );
 	~pkmButton( void );
 
-	void 		Render( void );
-	void 		Update( void );
-	void 		MouseButtonDown( const SDL_Event& e );
-	void 		MouseButtonUp( const SDL_Event& e );
+	void 		Render( void ) override;
+	void		Update( void ) override;
+	void 		MouseButtonDown( const SDL_Event& e ) override;
+	void 		MouseButtonUp( const SDL_Event& e ) override;
 	void 		SetText( const char* text );
 	const char* 	GetText( void ) const;
 	void 		SetColor( const int r, const int g, const int b );

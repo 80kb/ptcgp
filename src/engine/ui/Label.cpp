@@ -7,13 +7,15 @@ pkmLabel::pkmLabel( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
 	SetText( "label" );
 }
 
-pkmLabel::~pkmLabel ( void ) {
+pkmLabel::~pkmLabel( void ) {
 	pkmGameObject::~pkmGameObject();
 }
 
-void pkmLabel::Render ( void ) {
+void pkmLabel::Render( void ) {
 	SDL_RenderCopy( renderer, texture, NULL, &boundingBox );
 }
+
+void pkmLabel::Update( void ) {}
 
 void pkmLabel::SetText( const char* text ) {
 	this->text = text;

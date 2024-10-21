@@ -7,27 +7,21 @@
 #include "sdl/sdl_boiler.hpp"
 
 class pkmGameState {
-	std::vector<pkmGameObject*> gameObjects;
-	SDL_Event 	event;
-	SDL_State 	sdlState;
-	bool 		quit;
+	std::vector<pkmGameObject*> 	gameObjects;
+	SDL_Event 			event;
+	SDL_State 			sdlState;
+	bool 				quit;
 
 	void EventLoop( void );
-	void HandleEvent( void);
+	void HandleEvent( void );
 	void Update( void );
 	void Render( void );
 
 public:
-	pkmGameState( void ) : sdlState( "PTCG Player" ), quit( false ) { }
+	pkmGameState( void );
 
-	void GameLoop( void );
-	void RegisterObject( pkmGameObject* object );
-
-	SDL_Renderer* GetRenderer() const {
-		return sdlState.get_renderer();
-	}
-
-	SDL_Window* GetWindow() const {
-		return sdlState.get_window(); 
-	}
+	void 		GameLoop( void );
+	void 		RegisterObject( pkmGameObject* object );
+	SDL_Renderer* 	GetRenderer( void ) const;
+	SDL_Window* 	GetWindow( void ) const;
 };

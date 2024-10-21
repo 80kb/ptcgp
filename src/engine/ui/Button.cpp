@@ -10,14 +10,16 @@ pkmButton::pkmButton( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
 }
 
 pkmButton::~pkmButton( void ) {
-	SDL_DestroyTexture( textTexture );
+	pkmGameObject::~pkmGameObject();
 }
 
 void pkmButton::Render( void ) {
 	SDL_SetRenderDrawColor( renderer, r, g, b, 255 );
 	SDL_RenderFillRect( renderer, &boundingBox );
-	SDL_RenderCopy( renderer, textTexture, NULL, &boundingBox );
+	SDL_RenderCopy( renderer, texture, NULL, &boundingBox );
 }
+
+void pkmButton::Update( void ) {}
 
 void pkmButton::MouseButtonDown( const SDL_Event& e ) {
 	int r, g, b;
@@ -33,7 +35,7 @@ void pkmButton::MouseButtonDown( const SDL_Event& e ) {
 	clicked = true;
 	GetColor( r, g, b );
 	SetColor( r * 0.8, g * 0.8, b * 0.8 );
-	CallAction();
+	action();
 }
 
 void pkmButton::MouseButtonUp( const SDL_Event& e ) {
@@ -55,7 +57,27 @@ void pkmButton::MouseButtonUp( const SDL_Event& e ) {
 void pkmButton::SetText( const char* text ) {
 	this->text 		= text;
 	SDL_Surface* surface 	= TTF_RenderText_Solid( font, text, fontColor );
-	textTexture 		= SDL_CreateTextureFromSurface( renderer, surface );
+	texture 		= SDL_CreateTextureFromSurface( renderer, surface );
 
 	SDL_FreeSurface( surface );
+}
+
+const char* pkmButton::GetText( void ) const {
+	return text;
+}
+
+void pkmButton::SetColor( const int r, const int g, const int b ) {
+	this->r = r;
+	this->g = g;
+	this->b = b;
+}
+
+void pkmButton::GetColor( int& r, int& g, int& b ) const {
+	r = this->r;
+	g = this->g;
+	b = this->b;
+}
+
+void pkmButton::SetAction( const std::function<void()> action ) {
+	this->action = action;
 }

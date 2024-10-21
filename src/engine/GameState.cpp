@@ -1,5 +1,9 @@
 #include "GameState.hpp"
 
+pkmGameState::pkmGameState( void ) : sdlState( "PTCG Player" ) {
+	quit = false;
+}
+
 void pkmGameState::GameLoop( void ) {
 	while ( !quit ) {
 		EventLoop();
@@ -51,4 +55,12 @@ void pkmGameState::Render( void ) {
 
 void pkmGameState::RegisterObject( pkmGameObject* object ) {
 	gameObjects.push_back( object );
+}
+
+SDL_Renderer* pkmGameState::GetRenderer( void ) const {
+	return sdlState.get_renderer();
+}
+
+SDL_Window* pkmGameState::GetWindow( void ) const {
+	return sdlState.get_window();
 }

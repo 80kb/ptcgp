@@ -33,6 +33,8 @@ SDL_State::SDL_State (const char* title) {
 		SDL_RENDERER_PRESENTVSYNC |
 		SDL_RENDERER_ACCELERATED
 	);
+
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 }
 
 SDL_State::~SDL_State () {

@@ -1,34 +1,35 @@
 #include "engine/GameState.hpp"
 #include "engine/ui/Button.hpp"
-#include "engine/ui/Label.hpp"
+#include "engine/gobj/Card.hpp"
 
 int main (void) {
 	pkmGameState gameState;
 
-	pkmLabel label( gameState.GetRenderer() );
-	label.SetPosition( 100, 160 );
-	label.SetSize( 100, 50 );
-	label.SetText( "Geschichte" );
+	pkmCard card( gameState.GetRenderer(), "./res/darkrai.bmp" );
+	card.SetPosition( 100, 170 );
+	card.SetSize( 400, 600 );
 
-	bool toggle = true;
+	bool hideToggle = false;
 
 	pkmButton button( gameState.GetRenderer() );
 	button.SetPosition( 100, 100 );
 	button.SetSize( 100, 50 );
-	button.SetText( "Schoen" );
+	button.SetText( "Show" );
 	button.SetColor( 255, 0, 70 );
 	button.SetAction([&]( void ) {
-		if ( toggle ) {
-			label.SetText("Hello");
+		if ( hideToggle ) {
+			card.Hide();
+			button.SetText( "Show" );
 		} else {
-			label.SetText("World!");
+			card.Show();
+			button.SetText( "Hide" );
 		}
 
-		toggle = !toggle;
+		hideToggle = !hideToggle;
 	});
 
-	gameState.RegisterObject(&button);
-	gameState.RegisterObject(&label);
+	gameState.RegisterObject( &card );
+	gameState.RegisterObject( &button );
 
 	gameState.GameLoop();
 }

@@ -4,7 +4,6 @@
 #include <SDL2/SDL_ttf.h>
 
 class pkmLabel : public pkmGameObject {
-protected:
 	const char*	text;
 	TTF_Font* 	font;
 	SDL_Color 	fontColor;

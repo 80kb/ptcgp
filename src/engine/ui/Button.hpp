@@ -5,7 +5,6 @@
 #include <functional>
 
 class pkmButton : public pkmGameObject {
-protected:
 	std::function<void()> 	action;
 	TTF_Font* 		font;
 	SDL_Color 		fontColor;

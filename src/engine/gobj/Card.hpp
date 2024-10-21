@@ -2,8 +2,12 @@
 
 #include "../GameObject.hpp"
 
+#define DEFAULT_CARD_W 75
+#define DEFAULT_CARD_H ( DEFAULT_CARD_W + ( DEFAULT_CARD_W / 2 ) )
+#define BACK_TEXTURE "./res/back.bmp"
+
 class pkmCard : public pkmGameObject {
-protected:
+	SDL_Texture*	backTexture;
 	const char* 	faceTexturePath;
 	bool 		draggable;
 	bool 		dragging;
@@ -15,7 +19,7 @@ public:
 
 	void Render( void );
 	void Update( void );
-	void MouseButtonDown( const SDL_Event& e );
-	void MouseButtonUp( const SDL_Event& e );
 	void SetTexture( const char* path );
+	void Hide( void );
+	void Show( void );
 };

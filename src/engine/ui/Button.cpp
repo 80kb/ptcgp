@@ -55,10 +55,9 @@ void pkmButton::MouseButtonUp( const SDL_Event& e ) {
 }
 
 void pkmButton::SetText( const char* text ) {
-	this->text 		= text;
-	SDL_Surface* surface 	= TTF_RenderText_Solid( font, text, fontColor );
-	texture 		= SDL_CreateTextureFromSurface( renderer, surface );
-
+	this->text = text;
+	SDL_Surface* surface = TTF_RenderText_Solid( font, text, fontColor );
+	texture = SDL_CreateTextureFromSurface( renderer, surface );
 	SDL_FreeSurface( surface );
 }
 

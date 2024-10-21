@@ -14,6 +14,7 @@ SRC_FILES := $(SRC_DIR)/Main.cpp\
 	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp\
 	     $(SRC_DIR)/engine/ui/Button.cpp\
 	     $(SRC_DIR)/engine/ui/Label.cpp\
+	     $(SRC_DIR)/engine/gobj/Card.cpp
 
 $(TARGET): $(SRC_FILES)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $(BLD_DIR)/$@

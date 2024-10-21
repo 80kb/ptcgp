@@ -25,8 +25,6 @@ void pkmButton::MouseButtonDown( const SDL_Event& e ) {
 	pkmGameObject::MouseButtonDown( e );
 
 	int r, g, b;
-
-	clicked = true;
 	GetColor( r, g, b );
 	SetColor( r * 0.8, g * 0.8, b * 0.8 );
 	action();
@@ -36,8 +34,6 @@ void pkmButton::MouseButtonUp( const SDL_Event& e ) {
 	pkmGameObject::MouseButtonUp( e );
 
 	int r, g, b;
-
-	clicked = false;
 	GetColor( r, g, b );
 	SetColor( r / 0.8, g / 0.8, b / 0.8 );
 }

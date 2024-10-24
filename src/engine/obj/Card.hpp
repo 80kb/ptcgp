@@ -4,7 +4,7 @@
 
 #define DEFAULT_CARD_W 75
 #define DEFAULT_CARD_H ( DEFAULT_CARD_W + ( DEFAULT_CARD_W / 2 ) )
-#define BACK_TEXTURE "./res/back.bmp"
+#define BACK_TEXTURE "./res/img/back.bmp"
 
 class pkmCard : public pkmGameObject {
 	SDL_Texture*	backTexture;

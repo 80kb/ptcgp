@@ -1,7 +1,7 @@
 #include "Label.hpp"
 
 pkmLabel::pkmLabel( SDL_Renderer* renderer ) : pkmGameObject( renderer ) {
-	font 		= TTF_OpenFont( "./ttf/arial.ttf", 128 );
+	font 		= TTF_OpenFont( "./res/ttf/arial.ttf", 128 );
 	fontColor 	= { 255, 255, 255, 255 };
 
 	SetText( "label" );

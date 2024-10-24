@@ -1,4 +1,5 @@
 #include "GameState.hpp"
+#include "Palette.hpp"
 
 pkmGameState::pkmGameState( void ) : sdlState( "PTCG Player" ) {
 	quit = false;
@@ -42,7 +43,7 @@ void pkmGameState::Update( void ) {
 }
 
 void pkmGameState::Render( void ) {
-	SDL_SetRenderDrawColor( sdlState.get_renderer(), 35, 27, 46, 255 );
+	SDL_SetRenderDrawColor( sdlState.get_renderer(), COLOR_BACKGROUND );
 	SDL_RenderClear( sdlState.get_renderer() );
 
 	for ( size_t i = 0; i < gameObjects.size(); ++i ) {

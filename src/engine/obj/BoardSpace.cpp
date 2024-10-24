@@ -33,14 +33,14 @@ void pkmBoardSpace::RemoveCard( void ) {
 	card = NULL;
 }
 
-void pkmBoardSpace::SetColor( int r, int g, int b, int a ) {
+void pkmBoardSpace::SetColor( const int r, const int g, const int b, const int a ) {
 	this->r = r;
 	this->g = g;
 	this->b = b;
 	this->a = a;
 }
 
-void pkmBoardSpace::GetColor( int& r, int& g, int& b, int& a ) {
+void pkmBoardSpace::GetColor( int& r, int& g, int& b, int& a ) const {
 	r = this->r;
 	g = this->g;
 	b = this->b;

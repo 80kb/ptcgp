@@ -21,6 +21,6 @@ public:
 
 	void AddCard( pkmCard& card );
 	void RemoveCard( void );
-	void SetColor( int r, int g, int b, int a );
-	void GetColor( int& r, int& g, int& b, int& a );
+	void SetColor( const int r, const int g, const int b, const int a );
+	void GetColor( int& r, int& g, int& b, int& a ) const;
 };

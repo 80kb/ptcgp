@@ -19,8 +19,10 @@ public:
 	void Render( void ) override;
 	void Update( void ) override;
 
-	void AddCard( pkmCard& card );
-	void RemoveCard( void );
-	void SetColor( const int r, const int g, const int b, const int a );
-	void GetColor( int& r, int& g, int& b, int& a ) const;
+	void 		AddCard( pkmCard& card );
+	void 		RemoveCard( void );
+	pkmCard* 	GetCard( void ) const;
+	bool		IsEmpty( void ) const;
+	void 		SetColor( const int r, const int g, const int b, const int a );
+	void 		GetColor( int& r, int& g, int& b, int& a ) const;
 };

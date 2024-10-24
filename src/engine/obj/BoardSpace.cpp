@@ -26,11 +26,27 @@ void pkmBoardSpace::AddCard( pkmCard& card ) {
 }
 
 void pkmBoardSpace::RemoveCard( void ) {
-	if ( card == NULL ) {
+	if ( IsEmpty() ) {
 		return;
 	}
 
 	card = NULL;
+}
+
+pkmCard* pkmBoardSpace::GetCard( void ) const {
+	if ( IsEmpty() ) {
+		return NULL;
+	}
+
+	return card;
+}
+
+bool pkmBoardSpace::IsEmpty( void ) const {
+	if ( card == NULL ) {
+		return true;
+	}
+
+	return false;
 }
 
 void pkmBoardSpace::SetColor( const int r, const int g, const int b, const int a ) {

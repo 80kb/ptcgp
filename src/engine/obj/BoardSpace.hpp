@@ -9,7 +9,8 @@
 #define DEFAULT_SPACE_H DEFAULT_CARD_H + PADDING
 
 class pkmBoardSpace : public pkmGameObject {
-	pkmCard* card;	
+	pkmCard* 	card;	
+	int 		r, g, b, a;
 
 public:
 	pkmBoardSpace( SDL_Renderer* renderer );
@@ -20,4 +21,6 @@ public:
 
 	void AddCard( pkmCard& card );
 	void RemoveCard( void );
+	void SetColor( int r, int g, int b, int a );
+	void GetColor( int& r, int& g, int& b, int& a );
 };

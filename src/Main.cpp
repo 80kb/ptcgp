@@ -11,6 +11,7 @@ int main (void) {
 
 	pkmCard card0( gameState.GetRenderer(), "./res/darkrai.bmp" );
 	card0.SetPosition( 100, 400 );
+	card0.Show();
 	cards.push_back( &card0 );
 
 	pkmCard card1( gameState.GetRenderer(), "./res/darkrai.bmp" );
@@ -34,6 +35,8 @@ int main (void) {
 
 	space.RemoveCard();
 	space2.AddCard( card2 );
+
+	space.AddCard( card0 );
 
 	gameState.RegisterObject( &space2 );
 	gameState.RegisterObject( &space );

@@ -9,7 +9,7 @@ class pkmButton : public pkmGameObject {
 	TTF_Font* 		font;
 	SDL_Color 		fontColor;
 	const char*		text;
-	int 			r, g, b;
+	int 			r, g, b, a;
 
 public:
 	pkmButton( SDL_Renderer* renderer );
@@ -23,7 +23,7 @@ public:
 
 	void 		SetText( const char* text );
 	const char* 	GetText( void ) const;
-	void 		SetColor( const int r, const int g, const int b );
-	void 		GetColor( int& r, int& g, int& b ) const;
+	void 		SetColor( const int r, const int g, const int b, const int a );
+	void 		GetColor( int& r, int& g, int& b, int& a ) const;
 	void 		SetAction( const std::function<void()> action );
 };

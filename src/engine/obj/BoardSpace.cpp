@@ -5,6 +5,7 @@ pkmBoardSpace::pkmBoardSpace( SDL_Renderer* renderer ) : pkmGameObject( renderer
 	card = NULL;
 
 	SetSize( DEFAULT_SPACE_W, DEFAULT_SPACE_H );
+	SetColor( COLOR_BOARDSPACE );
 }
 
 pkmBoardSpace::~pkmBoardSpace( void ) {
@@ -12,7 +13,7 @@ pkmBoardSpace::~pkmBoardSpace( void ) {
 }
 
 void pkmBoardSpace::Render( void ) {
-	SDL_SetRenderDrawColor( renderer, COLOR_BOARDSPACE );
+	SDL_SetRenderDrawColor( renderer, r, g, b, a );
 	SDL_RenderFillRect( renderer, &boundingBox );
 }
 
@@ -30,4 +31,18 @@ void pkmBoardSpace::RemoveCard( void ) {
 	}
 
 	card = NULL;
+}
+
+void pkmBoardSpace::SetColor( int r, int g, int b, int a ) {
+	this->r = r;
+	this->g = g;
+	this->b = b;
+	this->a = a;
+}
+
+void pkmBoardSpace::GetColor( int& r, int& g, int& b, int& a ) {
+	r = this->r;
+	g = this->g;
+	b = this->b;
+	a = this->a;
 }

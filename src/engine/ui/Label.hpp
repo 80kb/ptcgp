@@ -14,6 +14,7 @@ public:
 
 	void 		Render( void ) override;
 	void		Update( void ) override;
+
 	void 		SetText( const char* text );
 	const char* 	GetText( void ) const;
 };

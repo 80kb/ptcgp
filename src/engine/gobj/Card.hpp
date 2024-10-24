@@ -20,8 +20,10 @@ public:
 
 	void Render( void ) override;
 	void Update( void ) override;
+
 	bool MouseHoverEnter( const SDL_Event& e ) override;
 	bool MouseHoverLeave( const SDL_Event& e ) override;
+
 	void SetTexture( const char* path );
 	void Hide( void );
 	void Show( void );

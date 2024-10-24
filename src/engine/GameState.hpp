@@ -26,6 +26,7 @@ public:
 
 	void 		GameLoop( void );
 	void 		RegisterObject( pkmGameObject* object );
+
 	SDL_Renderer* 	GetRenderer( void ) const;
 	SDL_Window* 	GetWindow( void ) const;
 };

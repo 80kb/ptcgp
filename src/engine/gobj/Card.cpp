@@ -2,9 +2,10 @@
 
 pkmCard::pkmCard( SDL_Renderer* renderer, const char* path ) : pkmGameObject( renderer ) {
 	faceTexturePath	= path;
-	draggable 	= false;
+	draggable 	= true;
 	dragging	= false;
 	hidden		= true;
+	growFactor	= 10;
 
 	SDL_Surface* surface = SDL_LoadBMP( BACK_TEXTURE );
 	backTexture = SDL_CreateTextureFromSurface( renderer, surface );
@@ -27,6 +28,40 @@ void pkmCard::Render( void ) {
 }
 
 void pkmCard::Update( void ) {}
+
+bool pkmCard::MouseHoverEnter( const SDL_Event& e ) {
+	if ( !pkmGameObject::MouseHoverEnter( e ) ) {
+		return false;
+	}
+
+	if ( draggable ) {
+		int w, h, x, y;
+		GetSize( w, h );
+		SetSize( w + growFactor, h + growFactor );
+
+		GetPosition( x, y );
+		SetPosition( x - (growFactor / 2), y - (growFactor / 2) );
+	}
+
+	return true;
+}
+
+bool pkmCard::MouseHoverLeave( const SDL_Event& e ) {
+	if ( !pkmGameObject::MouseHoverLeave( e ) ) {
+		return false;
+	}
+
+	if ( draggable ) {
+		int w, h, x, y;
+		GetSize( w, h );
+		SetSize( w - growFactor, h - growFactor );
+
+		GetPosition( x, y );
+		SetPosition( x + (growFactor / 2), y + (growFactor / 2) );
+	}
+
+	return true;
+}
 
 void pkmCard::SetTexture( const char* path ) {
 	SDL_Surface* surface = SDL_LoadBMP( path );

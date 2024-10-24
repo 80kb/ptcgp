@@ -21,21 +21,27 @@ void pkmButton::Render( void ) {
 
 void pkmButton::Update( void ) {}
 
-void pkmButton::MouseButtonDown( const SDL_Event& e ) {
-	pkmGameObject::MouseButtonDown( e );
+bool pkmButton::MouseButtonDown( const SDL_Event& e ) {
+	if ( !pkmGameObject::MouseButtonDown( e ) ) {
+		return false;
+	}
 
 	int r, g, b;
 	GetColor( r, g, b );
 	SetColor( r * 0.8, g * 0.8, b * 0.8 );
 	action();
+	return true;
 }
 
-void pkmButton::MouseButtonUp( const SDL_Event& e ) {
-	pkmGameObject::MouseButtonUp( e );
+bool pkmButton::MouseButtonUp( const SDL_Event& e ) {
+	if ( !pkmGameObject::MouseButtonUp( e ) ) {
+		return false;
+	}
 
 	int r, g, b;
 	GetColor( r, g, b );
 	SetColor( r / 0.8, g / 0.8, b / 0.8 );
+	return true;
 }
 
 void pkmButton::SetText( const char* text ) {

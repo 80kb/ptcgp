@@ -1,35 +1,32 @@
 #include "engine/GameState.hpp"
-#include "engine/ui/Button.hpp"
 #include "engine/gobj/Card.hpp"
+
+#include <vector>
 
 int main (void) {
 	pkmGameState gameState;
 
-	pkmCard card( gameState.GetRenderer(), "./res/darkrai.bmp" );
-	card.SetPosition( 100, 170 );
-	card.SetSize( 400, 600 );
+	std::vector<pkmCard*> cards;
 
-	bool hideToggle = false;
+	pkmCard card0( gameState.GetRenderer(), "./res/darkrai.bmp" );
+	card0.SetPosition( 100, 400 );
+	cards.push_back( &card0 );
 
-	pkmButton button( gameState.GetRenderer() );
-	button.SetPosition( 100, 100 );
-	button.SetSize( 100, 50 );
-	button.SetText( "Show" );
-	button.SetColor( 255, 0, 70 );
-	button.SetAction([&]( void ) {
-		if ( hideToggle ) {
-			card.Hide();
-			button.SetText( "Show" );
-		} else {
-			card.Show();
-			button.SetText( "Hide" );
-		}
+	pkmCard card1( gameState.GetRenderer(), "./res/darkrai.bmp" );
+	card1.SetPosition( 180, 400 );
+	cards.push_back( &card1 );
 
-		hideToggle = !hideToggle;
-	});
+	pkmCard card2( gameState.GetRenderer(), "./res/darkrai.bmp" );
+	card2.SetPosition( 260, 400 );
+	cards.push_back( &card2 );
 
-	gameState.RegisterObject( &card );
-	gameState.RegisterObject( &button );
+	pkmCard card3( gameState.GetRenderer(), "./res/darkrai.bmp" );
+	card3.SetPosition( 340, 400 );
+	cards.push_back( &card3 );
+
+	for ( pkmCard* card : cards ) {
+		gameState.RegisterObject( card );
+	}
 
 	gameState.GameLoop();
 }

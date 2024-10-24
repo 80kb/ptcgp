@@ -3,6 +3,7 @@
 pkmGameObject::pkmGameObject( SDL_Renderer* renderer ) {
 	this->renderer 	= renderer;
 	clicked		= false;
+	hovered		= false;
 
 	boundingBox.h = 50;
 	boundingBox.w = 50;
@@ -14,24 +15,52 @@ pkmGameObject::~pkmGameObject( void ) {
 	SDL_DestroyTexture( texture );
 }
 
-void pkmGameObject::MouseButtonDown( const SDL_Event& e ) {
+bool pkmGameObject::MouseButtonDown( const SDL_Event& e ) {
 	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
-		return;
+		return false;
 	}
 
 	clicked = true;
+	return true;
 }
 
-void pkmGameObject::MouseButtonUp( const SDL_Event& e ) {
+bool pkmGameObject::MouseButtonUp( const SDL_Event& e ) {
 	if ( e.type != SDL_MOUSEBUTTONDOWN ) {
-		return;
+		return false;
 	}
 
 	if ( !clicked ) {
-		return;
+		return false;
 	}
 
 	clicked = false;
+	return true;
+}
+
+bool pkmGameObject::MouseHoverEnter( const SDL_Event& e ) {
+	if ( e.type != SDL_MOUSEMOTION ) {
+		return false;
+	}
+
+	if ( hovered ) {
+		return false;
+	}
+
+	hovered = true;
+	return true;
+}
+
+bool pkmGameObject::MouseHoverLeave( const SDL_Event& e ) {
+	if ( e.type != SDL_MOUSEMOTION ) {
+		return false;
+	}
+
+	if ( !hovered ) {
+		return false;
+	}
+
+	hovered = false;
+	return true;
 }
 
 bool pkmGameObject::MouseColliding( int mouseX, int mouseY ) const {

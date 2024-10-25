@@ -13,7 +13,7 @@ protected:
 
 public:
 	pkmGameObject( SDL_Renderer* const renderer );
-	~pkmGameObject( void );
+	virtual ~pkmGameObject( void );
 
 	virtual void Update( void ) = 0;
 	virtual void Render( void ) = 0;

@@ -4,6 +4,7 @@ pkmGameObject::pkmGameObject( SDL_Renderer* renderer ) {
 	this->renderer 	= renderer;
 	clicked		= false;
 	hovered		= false;
+	texture		= NULL;
 
 	boundingBox.h = 50;
 	boundingBox.w = 50;
@@ -12,7 +13,9 @@ pkmGameObject::pkmGameObject( SDL_Renderer* renderer ) {
 }
 
 pkmGameObject::~pkmGameObject( void ) {
-	SDL_DestroyTexture( texture );
+	if ( texture != NULL ) {
+		SDL_DestroyTexture( texture );
+	}
 }
 
 bool pkmGameObject::MouseButtonDown( const SDL_Event& e ) {

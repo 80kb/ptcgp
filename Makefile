@@ -9,6 +9,7 @@ SRC_DIR := ./src
 LIB_DIR := ./lib
 
 SRC_FILES := $(SRC_DIR)/Main.cpp\
+	     $(SRC_DIR)/GameBoard.cpp\
 	     $(SRC_DIR)/engine/GameState.cpp\
 	     $(SRC_DIR)/engine/GameObject.cpp\
 	     $(SRC_DIR)/engine/sdl/sdl_boiler.cpp\

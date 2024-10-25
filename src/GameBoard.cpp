@@ -33,7 +33,7 @@ void pkmGameBoard::InitP2Active( void ) {
 	pkmBoardSpace* activeSpace = new pkmBoardSpace( renderer );
 	activeSpace->SetPosition( 400, 50 );
 	activeSpace->SetSize( 200, 300 );
-	objects.push_back( activeSpace );
+	boardSpaces.push_back( activeSpace );
 }
 
 void pkmGameBoard::InitP1Active( void ) {
@@ -46,7 +46,7 @@ void pkmGameBoard::InitP1Active( void ) {
 	pkmBoardSpace* activeSpace = new pkmBoardSpace( renderer );
 	activeSpace->SetPosition( 400, 500 );
 	activeSpace->SetSize( 200, 300 );
-	objects.push_back( activeSpace );
+	boardSpaces.push_back( activeSpace );
 }
 
 void pkmGameBoard::InitP2Bench( void ) {
@@ -62,7 +62,7 @@ void pkmGameBoard::InitP2Bench( void ) {
 		pkmBoardSpace* benchSpace = new pkmBoardSpace( renderer );
 		benchSpace->SetPosition( startPoint + (i * 110), 50 );
 		benchSpace->SetSize( 110, 165 );
-		objects.push_back( benchSpace );
+		boardSpaces.push_back( benchSpace );
 	}
 }
 
@@ -79,7 +79,7 @@ void pkmGameBoard::InitP1Bench( void ) {
 		pkmBoardSpace* benchSpace = new pkmBoardSpace( renderer );
 		benchSpace->SetPosition( startPoint + (i * 110), 635 );
 		benchSpace->SetSize( 110, 165 );
-		objects.push_back( benchSpace );
+		boardSpaces.push_back( benchSpace );
 	}
 }
 
@@ -93,7 +93,7 @@ void pkmGameBoard::InitLostZone( void ) {
 	pkmBoardSpace* lostSpace = new pkmBoardSpace( renderer );
 	lostSpace->SetPosition( 730, 310 );
 	lostSpace->SetSize( 150, 225 );
-	objects.push_back( lostSpace );
+	boardSpaces.push_back( lostSpace );
 }
 
 void pkmGameBoard::InitStadium( void ) {
@@ -106,7 +106,7 @@ void pkmGameBoard::InitStadium( void ) {
 	pkmBoardSpace* stadiumSpace = new pkmBoardSpace( renderer );
 	stadiumSpace->SetPosition( 890, 310 );
 	stadiumSpace->SetSize( 150, 225 );
-	objects.push_back( stadiumSpace );
+	boardSpaces.push_back( stadiumSpace );
 }
 
 void pkmGameBoard::InitP1Discard( void ) {
@@ -121,7 +121,7 @@ void pkmGameBoard::InitP1Discard( void ) {
 	pkmBoardSpace* benchSpace = new pkmBoardSpace( renderer );
 	benchSpace->SetPosition( startPoint, 635 );
 	benchSpace->SetSize( 110, 165 );
-	objects.push_back( benchSpace );
+	boardSpaces.push_back( benchSpace );
 }
 
 void pkmGameBoard::InitP2Discard( void ) {
@@ -136,13 +136,21 @@ void pkmGameBoard::InitP2Discard( void ) {
 	pkmBoardSpace* benchSpace = new pkmBoardSpace( renderer );
 	benchSpace->SetPosition( startPoint, 50 );
 	benchSpace->SetSize( 110, 165 );
-	objects.push_back( benchSpace );
+	boardSpaces.push_back( benchSpace );
 }
 
-int pkmGameBoard::GetSize( void ) const {
+int pkmGameBoard::GetObjectCount( void ) const {
 	return objects.size();
 }
 
 pkmGameObject* pkmGameBoard::GetObject( const int index ) const {
 	return objects[ index ];
+}
+
+int pkmGameBoard::GetSpaceCount( void ) const {
+	return boardSpaces.size();
+}
+
+pkmBoardSpace* pkmGameBoard::GetSpace( const int index ) const {
+	return boardSpaces[ index ];
 }

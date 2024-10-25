@@ -2,10 +2,12 @@
 
 #include <vector>
 #include "engine/GameObject.hpp"
+#include "engine/obj/BoardSpace.hpp"
 
 class pkmGameBoard {
 	SDL_Renderer*			renderer;
 	std::vector<pkmGameObject*> 	objects;
+	std::vector<pkmBoardSpace*>	boardSpaces;
 
 	int				p1BenchSize;
 	int				p2BenchSize;
@@ -22,6 +24,10 @@ public:
 	void		InitStadium( void );
 	void		InitP1Discard( void );
 	void		InitP2Discard( void );
-	int		GetSize( void ) const;
+
+	int		GetObjectCount( void ) const;
 	pkmGameObject*	GetObject( const int index ) const;
+
+	int		GetSpaceCount( void ) const;
+	pkmBoardSpace*	GetSpace( const int index ) const;
 };

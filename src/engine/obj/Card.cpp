@@ -2,7 +2,7 @@
 
 pkmCard::pkmCard( SDL_Renderer* renderer, const char* path ) : pkmGameObject( renderer ) {
 	faceTexturePath	= path;
-	draggable 	= true;
+	draggable 	= false;
 	dragging	= false;
 	hidden		= true;
 	growFactor	= 10;
@@ -34,14 +34,12 @@ bool pkmCard::MouseHoverEnter( const SDL_Event& e ) {
 		return false;
 	}
 
-	if ( draggable ) {
-		int w, h, x, y;
-		GetSize( w, h );
-		SetSize( w + growFactor, h + growFactor );
+	int w, h, x, y;
+	GetSize( w, h );
+	SetSize( w + growFactor, h + growFactor );
 
-		GetPosition( x, y );
-		SetPosition( x - (growFactor / 2), y - (growFactor / 2) );
-	}
+	GetPosition( x, y );
+	SetPosition( x - (growFactor / 2), y - (growFactor / 2) );
 
 	return true;
 }
@@ -51,14 +49,12 @@ bool pkmCard::MouseHoverLeave( const SDL_Event& e ) {
 		return false;
 	}
 
-	if ( draggable ) {
-		int w, h, x, y;
-		GetSize( w, h );
-		SetSize( w - growFactor, h - growFactor );
+	int w, h, x, y;
+	GetSize( w, h );
+	SetSize( w - growFactor, h - growFactor );
 
-		GetPosition( x, y );
-		SetPosition( x + (growFactor / 2), y + (growFactor / 2) );
-	}
+	GetPosition( x, y );
+	SetPosition( x + (growFactor / 2), y + (growFactor / 2) );
 
 	return true;
 }

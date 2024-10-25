@@ -26,8 +26,7 @@ public:
 	void		InitP2Discard( void );
 
 	int		GetObjectCount( void ) const;
-	pkmGameObject*	GetObject( const int index ) const;
-
 	int		GetSpaceCount( void ) const;
+	pkmGameObject*	GetObject( const int index ) const;
 	pkmBoardSpace*	GetSpace( const int index ) const;
 };
